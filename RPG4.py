@@ -97,7 +97,7 @@ class App:
         #ここで起動時の処理をします                                
         pyxel.init(128, 128)        
         pyxel.load('./sample03.pyxres')  
-        pyxel.mouse(True)  
+        pyxel.mouse(False)  
         self.player_pos = [16, 16]         
         pyxel.run(self.update, self.draw)
 
@@ -111,13 +111,13 @@ class App:
         #コントロール部分###################
         leftClick = rightClick = upClick = downClick = False
         if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
-            if 13*8 < pyxel.mouse_x <= 14*8 and (14*8 < pyxel.mouse_y <= 15*8 or 14*8 + 16*8 < pyxel.mouse_y <= 15*8 + 16*8):
+            if 10*8 < pyxel.mouse_x <= 12*8 and (12*8 < pyxel.mouse_y <= 14*8 or 12*8 + 16*8 < pyxel.mouse_y <= 14*8 + 16*8):
                 leftClick = True
-            elif 15*8 < pyxel.mouse_x <= 16*8 and (14*8 < pyxel.mouse_y <= 15*8 or 14*8 + 16*8 < pyxel.mouse_y <= 15*8 + 16*8):
+            elif 14*8 < pyxel.mouse_x <= 16*8 and (12*8 < pyxel.mouse_y <= 14*8 or 12*8 + 16*8 < pyxel.mouse_y <= 14*8 + 16*8):
                 rightClick = True
-            elif 14*8 < pyxel.mouse_x <= 15*8 and (13*8 < pyxel.mouse_y <= 14*8 or 13*8 +16*8 < pyxel.mouse_y <= 14*8 + 16*8):
+            elif 12*8 < pyxel.mouse_x <= 14*8 and (10*8 < pyxel.mouse_y <= 12*8 or 10*8 +16*8 < pyxel.mouse_y <= 14*8 + 16*8):
                 upClick = True
-            elif 14*8 < pyxel.mouse_x <= 15*8 and (15*8 < pyxel.mouse_y <= 16*8 or 15*8 + 16*8< pyxel.mouse_y <= 16*8 + 16*8):
+            elif 12*8 < pyxel.mouse_x <= 14*8 and (14*8 < pyxel.mouse_y <= 16*8 or 14*8 + 16*8< pyxel.mouse_y <= 16*8 + 16*8):
                 downClick = True
             elif 70 < pyxel.mouse_y <= 78:
                 self.game_start = True
@@ -154,11 +154,11 @@ class App:
     def event_check(self, x, y):
         t = pyxel.tilemaps[0].pget(x//8, y//8)
         if t == (0, 4):
-            pyxel.tilemaps[0].pset(11, 12, (1, 4))
+            pyxel.tilemaps[0].pset(8, 13, (1, 4))
             pyxel.tilemaps[0].pset(7, 9, (2, 0))
             pyxel.tilemaps[0].pset(8, 9, (3, 0))
         elif t == (1, 4):
-            pyxel.tilemaps[0].pset(11, 12, (0, 4))
+            pyxel.tilemaps[0].pset(8, 13, (0, 4))
             pyxel.tilemaps[0].pset(7, 9, (0, 3))
             pyxel.tilemaps[0].pset(8, 9, (1, 3))
         elif t == (2, 3) or t == (3, 3):
@@ -187,7 +187,7 @@ class App:
             pyxel.text(8*2, 70, "S = ", 7)
             self.Draw_fonts(["SI","yu","U","KA","TU","WO","HA","JI","ME","RU"], 8*4, 70)
             pyxel.text(8*2, 85, "Q = ", 7)
-            self.Draw_fonts(["RI","yu","U","NE","NN","SU","RU"], 8*4, 85)
+            self.Draw_fonts(["WA","a","HO","RI","NI","I","KU"], 8*4, 85)
 
         if self.game_goal == True:
             self.Draw_fonts(["KI","ya","RI","SE","NN","HE","YO","U","KO","SO"], 8*3, 8*16+8*9)
